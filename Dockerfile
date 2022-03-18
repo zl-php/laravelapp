@@ -31,7 +31,7 @@ COPY . /var/www/html
 
 RUN cd /var/www/html \
     && composer install -o --no-dev \
-    && cp .env.example .env \
+    && cp .env.local .env \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
 
