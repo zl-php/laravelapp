@@ -29,7 +29,7 @@ WORKDIR /var/www/html/public
 
 RUN cd /var/www/html \
     && composer install -o --no-dev \
-    && cp .env.test .env \
+    && cp .env.example .env \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
 
