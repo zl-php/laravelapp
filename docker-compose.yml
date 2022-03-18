@@ -39,7 +39,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
     ports:
-      - 6300:3306
+      - "3306:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -52,4 +52,4 @@ services:
     depends_on:
       - mysql
     ports:
-      - 8008:80
+      - "8008:80"
