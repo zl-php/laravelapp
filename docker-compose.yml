@@ -29,7 +29,7 @@ services:
 
   mysql:
     image: mysql:8
-    container_name: "laravel__mysql"
+    container_name: "laravel_mysql"
     security_opt:
       - seccomp:unconfined
     restart: unless-stopped
@@ -37,9 +37,9 @@ services:
       - "/home/web/mysql:/var/lib/mysql"
       - "/etc/localtime:/etc/localtime"
     environment:
-      - MYSQL_ROOT_PASSWORD=Vc4hzzxUAtvdbXz3k
+      MYSQL_ROOT_PASSWORD: Pc4hzz.sf
     ports:
-      - 3306:3306
+      - 6300:3306
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
