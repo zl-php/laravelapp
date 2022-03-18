@@ -5,6 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    container_name: "laravel_app"
     ports:
       - "8002:80"
     depends_on:
@@ -19,26 +20,26 @@ services:
 
   redis:
     image: "redis:alpine"
-    container_name: "web_redis"
+    container_name: "laravel_redis"
     volumes:
       - "/home/web/redis:/data"
       - "/etc/localtime:/etc/localtime"
 
   mysql:
     image: mysql:8
-    container_name: "web_mysql"
+    container_name: "laravel__mysql"
     restart: unless-stopped
     volumes:
       - "/home/web/mysql:/var/lib/mysql"
       - "/etc/localtime:/etc/localtime"
     environment:
-      MYSQL_ROOT_PASSWORD: Pc4hzz.sf
-      MYSQL_USER: longtu
-      MYSQL_PASSWORD: longtu.2021
+      MYSQL_ROOT_PASSWORD: Test.laravel
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test.2022
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: web_myadmin
+    container_name: "laravel_phpmyadmin"
     restart: unless-stopped
     volumes:
       - "/etc/timezone:/etc/timezone"
