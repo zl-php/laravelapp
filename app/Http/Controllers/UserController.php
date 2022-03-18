@@ -8,14 +8,18 @@ use App\Models\User;
 
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-//use App\Exceptions\InvalidRequestException;
+use App\Exceptions\InvalidRequestException;
 
 class UserController extends Controller
 {
     public function test()
     {
-        $user = User::all();
+        return $this->success();
 
-        dd($user->toArray());
+        //throw new InvalidRequestException('23232');
+
+//        $user = User::all();
+//
+//        dd($user->toArray());
     }
 }
