@@ -16,6 +16,7 @@ RUN sed -i "s/pm.max_children = [0-9]\+/pm.max_children = 64/g" /usr/local/etc/p
 RUN rm -Rf /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx-site.conf /etc/nginx/conf.d/default.conf
+COPY conf/nginx-site-ssl.conf /etc/nginx/conf.d/default-ssl.conf
 
 # Copy our nginx ssl
 COPY conf/ssl /etc/nginx/ssl
@@ -28,15 +29,14 @@ COPY start.sh /start.sh
 
 COPY . /var/www/html
 
-WORKDIR /var/www/html/public
-
 RUN cd /var/www/html \
     && composer install -o --no-dev \
     && cp .env.example .env \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 443 80
+
+WORKDIR /var/www/html
 
 CMD ["/start.sh"]
