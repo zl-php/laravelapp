@@ -1,0 +1,50 @@
+version: '3'
+services:
+
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8002:80"
+    depends_on:
+      - redis
+      - mysql
+    links:
+      - redis
+      - mysql
+    volumes:
+      - "/home/web/storage:/var/www/html/storage"
+      - "/etc/localtime:/etc/localtime"
+
+  redis:
+    image: "redis:alpine"
+    container_name: "web_redis"
+    volumes:
+      - "/home/web/redis:/data"
+      - "/etc/localtime:/etc/localtime"
+
+  mysql:
+    image: mysql:8
+    container_name: "web_mysql"
+    restart: unless-stopped
+    volumes:
+      - "/home/web/mysql:/var/lib/mysql"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      MYSQL_ROOT_PASSWORD: Pc4hzz.sf
+      MYSQL_USER: longtu
+      MYSQL_PASSWORD: longtu.2021
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: web_myadmin
+    restart: unless-stopped
+    volumes:
+      - "/etc/timezone:/etc/timezone"
+    environment:
+      - PMA_HOST=mysql
+    depends_on:
+      - mysql
+    ports:
+      - 8008:80
