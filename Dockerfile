@@ -17,6 +17,9 @@ RUN rm -Rf /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx-site.conf /etc/nginx/conf.d/default.conf
 
+# Copy our nginx ssl
+COPY conf/ssl /etc/nginx/ssl
+
 # Copy our supervisord config
 COPY conf/supervisord.conf /etc/supervisord.conf
 
@@ -33,6 +36,7 @@ RUN cd /var/www/html \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
 
-EXPOSE 8002
+EXPOSE 80
+EXPOSE 443
 
 CMD ["/start.sh"]
