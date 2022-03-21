@@ -155,7 +155,7 @@ if [ -z "$SKIP_COMPOSER" ]; then
     fi
 fi
 
-mkdir -p /var/www/html/storage/{logs,app/public,framework/{cache/data,sessions,testing,views}}
+#mkdir -p /var/www/html/storage/{logs,app/public,framework/{cache/data,sessions,testing,views}}
 
 
 # Start supervisord and services
