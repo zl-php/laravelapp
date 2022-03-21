@@ -16,12 +16,16 @@ services:
       - redis
       - mysql
     volumes:
-      - ./:/var/www
+      - "/home/web/storage:/var/www/html/storage"
+      - "/etc/localtime:/etc/localtime"
 
   redis:
     image: "redis:alpine"
     container_name: "laravel_redis"
     restart: unless-stopped
+    volumes:
+      - "/home/web/redis:/data"
+      - "/etc/localtime:/etc/localtime"
 
   mysql:
     image: mysql:8
@@ -30,7 +34,8 @@ services:
       - seccomp:unconfined
     restart: unless-stopped
     volumes:
-      - dbdata:/var/lib/mysql
+      - "/home/web/mysql/data/:/var/lib/mysql"
+      - "/etc/localtime:/etc/localtime"
     environment:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
     ports:
@@ -40,13 +45,11 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: "laravel_phpmyadmin"
     restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime
     environment:
       - PMA_HOST=mysql
     depends_on:
       - mysql
     ports:
       - "8008:80"
-
-volumes:
-  db_data:
-    driver: local
