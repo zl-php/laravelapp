@@ -16,7 +16,7 @@ services:
       - redis
       - mysql
     volumes:
-      - "/home/web/storage:/var/www/html/storage"
+      - "./.docker/web/storage:/var/www/html/storage"
       - "/etc/localtime:/etc/localtime"
 
   redis:
@@ -24,7 +24,7 @@ services:
     container_name: "laravel_redis"
     restart: unless-stopped
     volumes:
-      - "/home/web/redis:/data"
+      - "./.docker/redis/data:/data"
       - "/etc/localtime:/etc/localtime"
 
   mysql:
@@ -34,7 +34,7 @@ services:
       - seccomp:unconfined
     restart: unless-stopped
     volumes:
-      - "/home/web/mysql:/var/lib/mysql"
+      - "./.docker/mysql/dbdata:/var/lib/mysql"
       - "/etc/localtime:/etc/localtime"
     environment:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
