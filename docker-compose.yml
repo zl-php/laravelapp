@@ -46,7 +46,7 @@ services:
     container_name: "laravel_phpmyadmin"
     restart: unless-stopped
     volumes:
-      - /etc/localtime:/etc/localtime
+      - "/etc/localtime:/etc/localtime"
     environment:
       - PMA_HOST=mysql
     depends_on:
