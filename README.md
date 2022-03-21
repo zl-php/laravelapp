@@ -6,7 +6,7 @@ docker 部署的laravel8基础项目，由supervisord管理php-fpm、nginx
 ```
 git clone 
 
-docker-compose build
+docker-compose build laravelapp
 
 docker-compose up -d
 

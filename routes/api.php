@@ -14,10 +14,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 Route::get('test', [UserController::class, 'test']);
 
 
 // 登录中间件
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::get('test1', [UserController::class, 'test1']);
+
 
 });

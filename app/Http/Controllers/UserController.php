@@ -14,6 +14,24 @@ class UserController extends Controller
 {
     public function test()
     {
+        $user = User::find(1);
+
+
+        $token = auth()->login($user);
+
+        dd($token);
+
+        return $this->success();
+
+        //throw new InvalidRequestException('23232');
+
+//        $user = User::all();
+//
+//        dd($user->toArray());
+    }
+
+    public function test1()
+    {
         return $this->success();
 
         //throw new InvalidRequestException('23232');
