@@ -69,6 +69,6 @@ class Handler extends ExceptionHandler
             'not_found'             => '请求的方法不存在.',
         ];
 
-        return $message;
+        return $message[$key];
     }
 }
