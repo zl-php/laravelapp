@@ -5,6 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    image: "zhoulei0406/laravelapp:latest"
     container_name: "laravel_app"
     ports:
       - "80:80"
