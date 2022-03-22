@@ -2,9 +2,6 @@ version: '3'
 services:
 
   web:
-    build:
-      context: ./
-      dockerfile: Dockerfile
     image: "zhoulei0406/laravelapp:latest"
     container_name: "laravel_app"
     ports:
