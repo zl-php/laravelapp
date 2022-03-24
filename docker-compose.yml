@@ -2,7 +2,10 @@ version: '3'
 services:
 
   web:
-    image: "zhoulei0406/laravelapp:8"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "xxxx/laravelapp:8"
     container_name: "laravel_app"
     ports:
       - "80:80"

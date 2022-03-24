@@ -8,7 +8,7 @@ RUN sed -i "s/pm.max_children = [0-9]\+/pm.max_children = 64/g" /usr/local/etc/p
     && sed -i 's/session.save_handler = files/session.save_handler = redis\nsession.save_path = "tcp:\/\/redis:6379"/g' /usr/local/etc/php/php.ini \
     && sed -i 's/session.gc_maxlifetime = 1440/session.gc_maxlifetime = 14400/g' /usr/local/etc/php/php.ini \
     && sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /usr/local/etc/php/conf.d/docker-vars.ini \
-    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
+    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk add --no-cache lua-resty-core nginx-mod-http-lua \
     && docker-php-ext-install sockets bcmath
 
