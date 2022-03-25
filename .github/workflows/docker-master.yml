@@ -20,7 +20,7 @@ jobs:
         uses: AEnterprise/rsync-deploy@v1.0
         env:
             DEPLOY_KEY: ${{ secrets.SERVER_SECRET }}
-            ARGS: -avz docker-compose.yml --delete
+            ARGS: -avz --delete
             SERVER_PORT: 22
             FOLDER: ./docker-compose.yml
             SERVER_IP: ${{ secrets.SERVER_HOST }}
