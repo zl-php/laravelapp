@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI Master
 
 on:
   push:
@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . -f Dockerfile -t zhoulei0406:8
+      run: |
+        docker build . -f Dockerfile -t ${{ IMAGES_NAME }}
+        docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
+        docker push ${{ secrets.HUB_USERNAME }}/${{ IMAGES_NAME }}
+    - name: Deploy to Server
