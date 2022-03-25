@@ -13,10 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@main
 
-      - name: Upload to Server
+      - name: Build the Docker image
+        run: |
+          docker build . -f Dockerfile -t zhoulei0406/laravelapp:8
+          docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
+          docker pull zhoulei0406/laravelapp:8
+
+      - name: Upload docker-compose file to Server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
             DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -25,6 +31,15 @@ jobs:
             FOLDER: ./docker-compose.yml
             SERVER_IP: ${{ secrets.SERVER_IP }}
             USERNAME: ${{ secrets.SERVER_USERNAME }}
-            SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+            SERVER_DESTINATION: ${{ secrets.APP_DIR }}
+
+      - name: Start the application
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          run: |
+            ls -a
 
 
