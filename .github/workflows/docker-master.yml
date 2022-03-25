@@ -18,7 +18,7 @@ jobs:
 
       - name: Upload to Server
         uses: AEnterprise/rsync-deploy@v1.0
-          env:
+        env:
             DEPLOY_KEY: ${{ secrets.SERVER_SECRET }}
             ARGS: -avz docker-compose.yml --delete
             SERVER_PORT: 22
