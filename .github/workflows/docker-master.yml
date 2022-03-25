@@ -40,6 +40,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            mkdir laravelapp/test
             ls -a
 
 

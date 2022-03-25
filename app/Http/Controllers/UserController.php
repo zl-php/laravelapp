@@ -23,21 +23,11 @@ class UserController extends Controller
 
         return $this->success();
 
-        //throw new InvalidRequestException('23232');
-
-//        $user = User::all();
-//
-//        dd($user->toArray());
     }
 
     public function test1()
     {
         return $this->success();
 
-        //throw new InvalidRequestException('23232');
-
-//        $user = User::all();
-//
-//        dd($user->toArray());
     }
 }
