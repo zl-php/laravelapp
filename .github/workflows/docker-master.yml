@@ -22,7 +22,7 @@ jobs:
             DEPLOY_KEY: ${{ secrets.SERVER_SECRET }}
             ARGS: -avz docker-compose.yml --delete
             SERVER_PORT: 22
-            FOLDER: ./
+            FOLDER: ./docker-compose.yml
             SERVER_IP: ${{ secrets.SERVER_HOST }}
             USERNAME: ${{ secrets.SERVER_USERNAME }}
             SERVER_DESTINATION: abc
