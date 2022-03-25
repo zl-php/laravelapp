@@ -33,7 +33,7 @@ jobs:
             USERNAME: ${{ secrets.SERVER_USERNAME }}
             SERVER_DESTINATION: ${{ secrets.APP_DIR }}
 
-      - name: Start the application
+      - name: Start Docker image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -42,5 +42,9 @@ jobs:
           script: |
             cd laravelapp
             ls -a
+
+      - name: Start-up success
+        run: |
+          echo "Success"
 
 
