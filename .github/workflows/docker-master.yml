@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout application
         uses: actions/checkout@main
 
-      - name: Build the Docker image
+      - name: Build and Push the Docker image
         run: |
           docker build . -f Dockerfile -t zhoulei0406/laravelapp:8
           docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            mkdir laravelapp/test
+            cd laravelapp
             ls -a
 
 

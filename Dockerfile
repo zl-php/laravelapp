@@ -16,7 +16,7 @@ RUN sed -i "s/pm.max_children = [0-9]\+/pm.max_children = 64/g" /usr/local/etc/p
 RUN rm -Rf /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx-site.conf /etc/nginx/conf.d/default.conf
-COPY conf/nginx-site-ssl.conf /etc/nginx/conf.d/default-ssl.conf
+#COPY conf/nginx-site-ssl.conf /etc/nginx/conf.d/default-ssl.conf
 
 # Copy our nginx ssl
 COPY conf/ssl /etc/nginx/ssl
