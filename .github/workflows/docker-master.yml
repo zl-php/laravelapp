@@ -8,17 +8,23 @@ on:
 
 jobs:
 
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Execute Script
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.SERVER_SECRET }}
-        script: |
-          mkdir abc
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Upload to Server
+        uses: AEnterprise/rsync-deploy@v1.0
+          env:
+            DEPLOY_KEY: ${{ secrets.SERVER_SECRET }}
+            ARGS: -avz docker-compose.yml --delete
+            SERVER_PORT: 22
+            FOLDER: ./
+            SERVER_IP: ${{ secrets.SERVER_HOST }}
+            USERNAME: ${{ secrets.SERVER_USERNAME }}
+            SERVER_DESTINATION: abc
+
+
