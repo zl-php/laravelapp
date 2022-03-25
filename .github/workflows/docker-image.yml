@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
-        docker build . -f Dockerfile -t ${{ IMAGES_NAME }}
+        docker build . -f Dockerfile -t ${{ secrets.IMAGES_NAME }}
         docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
-        docker push ${{ secrets.HUB_USERNAME }}/${{ IMAGES_NAME }}
+        docker push ${{ secrets.HUB_USERNAME }}/${{ secrets.IMAGES_NAME }}
