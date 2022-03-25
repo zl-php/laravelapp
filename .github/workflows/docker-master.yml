@@ -19,12 +19,12 @@ jobs:
       - name: Upload to Server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
-            DEPLOY_KEY: ${{ secrets.SERVER_SECRET }}
-            ARGS: -avz --delete
-            SERVER_PORT: 22
+            DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+            ARGS: -avz --no-owner --no-group --no-perms --progress --delete
+            SERVER_PORT: ${{ secrets.SERVER_PORT }}
             FOLDER: ./docker-compose.yml
-            SERVER_IP: ${{ secrets.SERVER_HOST }}
+            SERVER_IP: ${{ secrets.SERVER_IP }}
             USERNAME: ${{ secrets.SERVER_USERNAME }}
-            SERVER_DESTINATION: abc
+            SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
 
 
