@@ -155,5 +155,7 @@ if [ -z "$SKIP_COMPOSER" ]; then
     fi
 fi
 
+mkdir -p /var/www/html/storage/{logs,app/public,framework/{cache/data,sessions,testing,views}}
+
 # Start supervisord and services
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
