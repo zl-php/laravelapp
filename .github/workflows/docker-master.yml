@@ -21,7 +21,6 @@ jobs:
           docker build . -f Dockerfile -t zhoulei0406/laravelapp:8
           docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
           docker push zhoulei0406/laravelapp:8
-
       - name: Upload docker-compose file to Server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
@@ -40,7 +39,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd laravelapp
+            cd ${{ secrets.APP_DIR }}
             ls -a
 
       - name: Start-up success

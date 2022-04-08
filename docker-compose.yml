@@ -8,8 +8,7 @@ services:
     image: "zhoulei0406/laravelapp:8"
     container_name: "laravel_app"
     ports:
-      - "80:80"
-      - "443:443"
+      - "8000:80"
     depends_on:
       - redis
       - mysql

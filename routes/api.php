@@ -16,6 +16,10 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('test', [UserController::class, 'test']);
+Route::get('encrypt', [UserController::class, 'encrypt']);
+Route::get('decrypt', [UserController::class, 'decrypt']);
+Route::get('genSign', [UserController::class, 'genSign']);
+Route::get('verifySign', [UserController::class, 'verifySign']);
 
 
 // 登录中间件
