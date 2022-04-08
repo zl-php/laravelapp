@@ -49,8 +49,8 @@ services:
       - "/etc/localtime:/etc/localtime"
     environment:
       - PMA_HOST=mysql
+      - PMA_ABSOLUTE_URI=http://43.138.25.184/pma/
     depends_on:
       - mysql
     ports:
       - "8008:80"
-    PMA_ABSOLUTE_URI: http://43.138.25.184/pma/
