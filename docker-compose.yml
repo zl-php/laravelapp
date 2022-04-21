@@ -19,6 +19,8 @@ services:
     volumes:
       - "/home/web/storage:/var/www/html/storage"
       - "/etc/localtime:/etc/localtime"
+    networks:
+      - laravel
 
   redis:
     image: "redis:alpine"
@@ -27,6 +29,8 @@ services:
     volumes:
       - "/home/web/redis:/data"
       - "/etc/localtime:/etc/localtime"
+    networks:
+      - laravel
 
   mysql:
     image: mysql:8
@@ -41,6 +45,8 @@ services:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
     ports:
       - "3306:3306"
+    networks:
+      - laravel
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -55,3 +61,9 @@ services:
       - mysql
     ports:
       - "8008:80"
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
