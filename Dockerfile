@@ -35,7 +35,7 @@ RUN cd /var/www/html \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
 
-EXPOSE 8000
+EXPOSE 80 443
 
 WORKDIR /var/www/html
 
