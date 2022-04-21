@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: "zhoulei0406/laravelapp:8"
-    container_name: "laravel_app"
+    container_name: "api"
     ports:
       - "80:80"
       - "443:443"
@@ -22,7 +22,7 @@ services:
 
   redis:
     image: "redis:alpine"
-    container_name: "laravel_redis"
+    container_name: "api_redis"
     restart: unless-stopped
     volumes:
       - "/home/web/redis:/data"
@@ -30,7 +30,7 @@ services:
 
   mysql:
     image: mysql:8
-    container_name: "laravel_mysql"
+    container_name: "api_mysql"
     security_opt:
       - seccomp:unconfined
     restart: unless-stopped
@@ -44,13 +44,13 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: "laravel_phpmyadmin"
+    container_name: "api_phpmyadmin"
     restart: unless-stopped
     volumes:
       - "/etc/localtime:/etc/localtime"
     environment:
       - PMA_HOST=mysql
-      - PMA_ABSOLUTE_URI=https://zuogechengxu/pma/
+      - PMA_ABSOLUTE_URI=https://www.zuogechengxu.com/pma/
     depends_on:
       - mysql
     ports:
