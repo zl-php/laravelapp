@@ -7,7 +7,7 @@
     </head>
     <body>
        <div>
-           承接各类程序开发，联系方式：lei_0668@sina.com
+           网站建设中，承接各类程序开发（网站，小程序，APP），联系方式：lei_0668@sina.com
        </div>
     </body>
 </html>
