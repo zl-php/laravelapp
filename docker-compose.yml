@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: "zhoulei0406/laravelapp:8"
-    container_name: "api"
+    container_name: "laravel_web"
     ports:
       - "80:80"
       - "443:443"
@@ -17,29 +17,29 @@ services:
       - redis
       - mysql
     volumes:
-      - "/home/web/storage:/var/www/html/storage"
+      - "/home/laravel/storage:/var/www/html/storage"
       - "/etc/localtime:/etc/localtime"
     networks:
       - laravel
 
   redis:
     image: "redis:alpine"
-    container_name: "api_redis"
+    container_name: "laravel_redis"
     restart: unless-stopped
     volumes:
-      - "/home/web/redis:/data"
+      - "/home/laravel/redis:/data"
       - "/etc/localtime:/etc/localtime"
     networks:
       - laravel
 
   mysql:
     image: mysql:8
-    container_name: "api_mysql"
+    container_name: "laravel_mysql"
     security_opt:
       - seccomp:unconfined
     restart: unless-stopped
     volumes:
-      - "/home/web/mysql/data/:/var/lib/mysql"
+      - "/home/laravel/mysql/:/var/lib/mysql"
       - "/etc/localtime:/etc/localtime"
     environment:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
@@ -50,7 +50,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: "api_phpmyadmin"
+    container_name: "laravel_phpmyadmin"
     restart: unless-stopped
     volumes:
       - "/etc/localtime:/etc/localtime"
