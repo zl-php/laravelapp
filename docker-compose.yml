@@ -39,7 +39,7 @@ services:
       - seccomp:unconfined
     restart: unless-stopped
     volumes:
-      - "/home/laravel/mysql/:/var/lib/mysql"
+      - "/home/laravel/mysql:/var/lib/mysql"
       - "/etc/localtime:/etc/localtime"
     environment:
       MYSQL_ROOT_PASSWORD: Pc4hzz.sf
