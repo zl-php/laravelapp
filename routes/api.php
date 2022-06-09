@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\UserController;
 */
 
 
+Route::get('wx', [TestController::class, 'test']);
 Route::get('test', [UserController::class, 'test']);
 Route::get('encrypt', [UserController::class, 'encrypt']);
 Route::get('decrypt', [UserController::class, 'decrypt']);
