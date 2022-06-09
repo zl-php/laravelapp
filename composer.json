@@ -11,7 +11,8 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "zuogechengxu/wechat": "^1.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
