@@ -156,6 +156,7 @@ if [ -z "$SKIP_COMPOSER" ]; then
 fi
 
 mkdir -p /var/www/html/storage/{logs,app/public,framework/{cache/data,sessions,testing,views}}
+chown -R nginx:nginx /var/www/html
 
 # Start supervisord and services
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf

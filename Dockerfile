@@ -37,8 +37,6 @@ RUN cd /var/www/html \
     && composer update \
     && chmod +x /start.sh
 
-RUN chown -R nginx:nginx /var/www/html
-
 WORKDIR /var/www/html
 
 EXPOSE 80 443
