@@ -31,7 +31,7 @@ COPY . /var/www/html
 
 RUN cd /var/www/html \
     && composer config repos.packagist composer https://mirrors.cloud.tencent.com/composer/ \
-    && composer install \
+    && composer update \
     && cp .env.local .env \
     && chown -Rf nginx.nginx /var/www/html \
     && chmod +x /start.sh
