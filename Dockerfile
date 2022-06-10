@@ -1,5 +1,7 @@
 FROM richarvey/nginx-php-fpm:1.10.4
 
+MAINTAINER zhoulei <lei_0668@sina.com>
+
 RUN sed -i "s/pm.max_children = [0-9]\+/pm.max_children = 64/g" /usr/local/etc/php-fpm.d/www.conf \
     && sed -i "s/pm.start_servers = [0-9]\+/pm.start_servers = 8/g" /usr/local/etc/php-fpm.d/www.conf \
     && sed -i "s/pm.min_spare_servers = [0-9]\+/pm.min_spare_servers = 8/g" /usr/local/etc/php-fpm.d/www.conf \
@@ -31,8 +33,9 @@ COPY start.sh /start.sh
 COPY . /var/www/html
 
 RUN cd /var/www/html \
-    && composer update \
+    && chown -R nginx:nginx /var/www/html/ \
     && cp .env.local .env \
+    && composer update \
     && chmod +x /start.sh
 
 EXPOSE 80 443
