@@ -32,12 +32,11 @@ COPY start.sh /start.sh
 
 COPY . /var/www/html
 
-RUN cd /var/www/html \
-    && cp .env.local .env \
+WORKDIR /var/www/html
+
+RUN cp .env.local .env \
     && composer update \
     && chmod +x /start.sh
-
-WORKDIR /var/www/html
 
 EXPOSE 80 443
 
