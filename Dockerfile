@@ -29,7 +29,6 @@ COPY start.sh /start.sh
 COPY . /var/www/html
 
 RUN cd /var/www/html \
-    && composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/ \
     && composer install \
     && cp .env.local .env \
     && chown -Rf nginx.nginx /var/www/html \
