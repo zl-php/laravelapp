@@ -36,6 +36,6 @@ class InvalidRequestException extends Exception
         if($this->code == Response::HTTP_INTERNAL_SERVER_ERROR)
             return response()->json($result, $this->code);
 
-        return response()->json($result, 200);
+        return response()->json($result, Response::HTTP_OK);
     }
 }
