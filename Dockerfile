@@ -32,8 +32,8 @@ COPY start.sh /start.sh
 
 COPY . /var/www/html
 
+RUN chown -R nginx:nginx /var/www/html
 RUN cd /var/www/html \
-    && chown -R nginx:nginx /var/www/html/ \
     && cp .env.local .env \
     && composer update \
     && chmod +x /start.sh

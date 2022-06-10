@@ -18,9 +18,11 @@ jobs:
 
       - name: Build and Push the Docker image
         run: |
+          echo "app docker image building start..."
           docker build . -f Dockerfile -t zhoulei0406/laravelapp:8
           docker login -u ${{ secrets.HUB_USERNAME }} -p ${{ secrets.HUB_TOKEN }}
           docker push zhoulei0406/laravelapp:8
+          echo "app docker images building end..."
       - name: Upload docker-compose file to Server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
@@ -45,8 +47,8 @@ jobs:
             docker-compose -f docker-compose.yml up -d
             docker image prune -f
 
-      - name: Start-up success
+      - name: Deployment Success
         run: |
-          echo "Success"
+          echo "deployment success"
 
 
