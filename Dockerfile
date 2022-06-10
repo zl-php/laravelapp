@@ -11,7 +11,7 @@ RUN sed -i "s/pm.max_children = [0-9]\+/pm.max_children = 64/g" /usr/local/etc/p
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk add --no-cache lua-resty-core nginx-mod-http-lua \
     && docker-php-ext-install sockets bcmath \
-    && composer self-update
+    && composer self-update --2
 
 # Copy our nginx config
 RUN rm -Rf /etc/nginx/nginx.conf
